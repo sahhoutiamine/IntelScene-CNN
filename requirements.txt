@@ -1,0 +1,23 @@
+# Deep Learning
+tensorflow==2.16.2        # includes Keras 3 (CPU build works everywhere)
+
+# Data / scientific stack
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.5.2
+pillow==10.4.0
+
+# Visualisation
+matplotlib==3.9.2
+seaborn==0.13.2
+
+# Notebooks
+jupyterlab==4.2.5
+ipykernel==6.29.5
+
+# Utils
+pyyaml==6.0.2
+tqdm==4.66.5
+
+# Tests
+pytest==8.3.3

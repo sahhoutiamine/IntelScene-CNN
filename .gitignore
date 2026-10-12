@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Dataset (never commit images)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Models & generated reports (large / reproducible)
+models/*
+!models/.gitkeep
+reports/*.csv
+reports/*.json
+reports/figures/*
+!reports/figures/.gitkeep
+
+# TensorFlow / logs
+logs/
+*.h5
+*.keras
+*.weights.h5
+*.tfevents*
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,10 @@
+.git
+.gitignore
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+data/raw/
+data/processed/
+models/*.keras
+reports/figures/
+.venv/
