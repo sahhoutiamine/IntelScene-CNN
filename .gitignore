@@ -1,38 +1,42 @@
 # Python
 __pycache__/
 *.py[cod]
-*.egg-info/
 .pytest_cache/
+.coverage
+.mypy_cache/
+.ruff_cache/
+
+# Environments / secrets
 .venv/
 venv/
 .env
+.env.*
+!.env.example
 
-# Jupyter
+# Notebooks / editors / OS
 .ipynb_checkpoints/
-
-# Dataset (never commit images)
-data/raw/*
-data/processed/*
-!data/raw/.gitkeep
-!data/processed/.gitkeep
-
-# Models & generated reports (large / reproducible)
-models/*
-!models/.gitkeep
-reports/*.csv
-reports/*.json
-reports/figures/*
-!reports/figures/.gitkeep
-
-# TensorFlow / logs
-logs/
-*.h5
-*.keras
-*.weights.h5
-*.tfevents*
-
-# OS / IDE
+.vscode/
+.idea/
 .DS_Store
 Thumbs.db
-.idea/
-.vscode/
+
+# Datasets and generated splits (keep the folder placeholders)
+data/intel_image_classification/**
+!data/intel_image_classification/.gitkeep
+data/splits/**
+!data/splits/.gitkeep
+data/image_audit.csv
+
+# Trained models, checkpoints and generated outputs
+models/**
+!models/.gitkeep
+reports/figures/**
+!reports/figures/.gitkeep
+reports/metrics/**
+!reports/metrics/.gitkeep
+*.keras
+*.h5
+*.tflite
+
+# Docker / local logs
+*.log

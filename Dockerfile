@@ -1,22 +1,16 @@
-FROM python:3.11-slim
+# Beginner-friendly CPU environment for TensorFlow / Keras.
+FROM python:3.11-slim-bookworm
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PIP_NO_CACHE_DIR=1 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1 \
-    TF_CPP_MIN_LOG_LEVEL=2 \
-    PYTHONPATH=/app
+    TF_CPP_MIN_LOG_LEVEL=2
 
-WORKDIR /app
+WORKDIR /workspace
 
-# Install dependencies first (better Docker layer caching)
-COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
+# Install Python packages when requirements change (better build caching).
+COPY requirements.txt ./requirements.txt
+RUN python -m pip install --no-cache-dir --upgrade pip && \
+    python -m pip install --no-cache-dir -r requirements.txt
 
-# Copy the project (in dev, docker-compose mounts the folder over this)
-COPY . .
-
-EXPOSE 8888
-
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", \
-     "--IdentityProvider.token=", "--ServerApp.password="]
+# Project source is mounted by docker-compose for easy editing.
+CMD ["sleep", "infinity"]

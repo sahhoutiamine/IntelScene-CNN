@@ -1,23 +1,19 @@
-# Deep Learning
-tensorflow==2.16.2        # includes Keras 3 (CPU build works everywhere)
+# Deep Learning (CPU-first Docker setup)
+tensorflow==2.21.0
 
-# Data / scientific stack
-numpy==1.26.4
-pandas==2.2.2
-scikit-learn==1.5.2
-pillow==10.4.0
+# Data exploration and preparation
+numpy>=1.26,<3
+pandas>=2.2,<3
+Pillow>=10,<13
 
-# Visualisation
-matplotlib==3.9.2
-seaborn==0.13.2
+# Visualizations
+matplotlib>=3.8,<4
+seaborn>=0.13,<1
 
-# Notebooks
-jupyterlab==4.2.5
-ipykernel==6.29.5
+# Dataset splits and evaluation
+scikit-learn>=1.5,<2
 
-# Utils
-pyyaml==6.0.2
-tqdm==4.66.5
-
-# Tests
-pytest==8.3.3
+# Prediction demo / development tools
+streamlit>=1.40,<2
+jupyterlab>=4,<5
+pytest>=8,<10

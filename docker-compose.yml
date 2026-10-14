@@ -1,28 +1,17 @@
 services:
-  # JupyterLab for notebooks  ->  http://localhost:8888
-  jupyter:
-    build: .
-    image: intel-cnn:latest
-    container_name: intel-cnn-jupyter
+  workspace:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    environment:
+      PYTHONUNBUFFERED: "1"
+      TF_CPP_MIN_LOG_LEVEL: "2"
     ports:
-      - "8888:8888"
-    volumes:
-      - .:/app
-    environment:
-      - PYTHONPATH=/app
-      - TF_CPP_MIN_LOG_LEVEL=2
-    shm_size: "2gb"
-    restart: unless-stopped
-
-  # One-shot commands (prepare / train / evaluate / predict / tests)
-  # docker compose run --rm trainer python -m src.training.train --exp baseline
-  trainer:
-    build: .
-    image: intel-cnn:latest
-    profiles: ["tools"]
-    volumes:
-      - .:/app
-    environment:
-      - PYTHONPATH=/app
-      - TF_CPP_MIN_LOG_LEVEL=2
-    shm_size: "2gb"
+      - "127.0.0.1:8501:8501" # Streamlit (later)
+      - "127.0.0.1:8888:8888" # Jupyter (optional)
+    stdin_open: true
+    tty: true
+    command: sleep infinity
